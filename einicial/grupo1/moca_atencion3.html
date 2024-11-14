@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MoCA - Atención 3</title>
+    <link rel="stylesheet" href="moca_atencion.css">
+	<style>
+	
+		#current-number {
+			font-weight: bold;
+			color: red; /* Resalta el número en rojo */
+		}
+
+		#contador {
+			font-size: 18px;
+			text-align: center;
+			margin-top: 20px;
+			color: #333;
+		}
+
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-info" id="user-info"></div>
+        <h1>PRUEBA 2: MoCA <br>Área: Atención (Parte 3)</h1>
+        <p id="instructions">
+            <strong>Instrucciones:</strong> Para el siguiente ejercicio debe realizar un cálculo mental y, por lo tanto, <strong>NO</strong> puede recurrir a contar con los dedos o usar un lápiz y papel.  <br><br>
+			<strong>Escriba en la caja UN solo número y haga clic en SIGUIENTE para añadir otra respuesta.</strong>
+			<br><br>
+			Comenzando desde el <strong id="current-number">100</strong> reste de 7 en 7.
+            
+	   </p>
+
+        <div id="input-section">
+            <input type="text" id="numero" placeholder="Escriba un número" required autocomplete="off">
+            <button type="button" id="submit-button">Siguiente</button>
+        </div>
+
+        <p id="contador">Completado 0/5</p>
+    </div>
+
+    <script src="moca_atencion3.js"></script>
+    <script>
+        // Recuperar nombre y correo desde localStorage
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MoCA - Recuerdo Diferido</title>
+    <link rel="stylesheet" href="style.css"> <!-- Si tienes un archivo CSS, enlázalo aquí -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centrar el texto */
+        }
+
+        h1 {
+            color: #003DA5;
+            margin-bottom: 20px;
+        }
+
+        .word-list {
+            margin: 40px 0; /* Espacio arriba y abajo */
+        }
+
+        input[type="text"] {
+            width: 80%; /* Ajustar el ancho de los inputs */
+            padding: 10px;
+            margin: 10px 0; /* Espacio entre inputs */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #003DA5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%; 
+        }
+
+        button:hover {
+            background-color: #002B7E; /* Color más oscuro al pasar el mouse */
+        }
+
+        .user-info {
+            margin-bottom: 20px; /* Espacio antes de mostrar el nombre y correo */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+        <h1>PRUEBA 2: MoCA <br>Área: Recuerdo diferido</h1>
+        
+        <p><strong>Instrucciones:</strong> Por favor escriba las palabras que se le pidió que memorizara al principio de la evaluación.</p>
+
+        <form id="moca-form" autocomplete="off">
+            <input type="text" id="word_1" placeholder="Palabra 1" required>
+            <input type="text" id="word_2" placeholder="Palabra 2" required>
+            <input type="text" id="word_3" placeholder="Palabra 3" required>
+            <input type="text" id="word_4" placeholder="Palabra 4" required>
+            <input type="text" id="word_5" placeholder="Palabra 5" required>
+            <button type="button" id="submit-button">Enviar</button>
+        </form>
+    </div>
+
+    <script src="moca_recuerdo_diferido.js"></script>
+    <script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior derecha
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+    </script>
+</body>
+</html>

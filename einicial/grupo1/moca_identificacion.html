@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MoCA - Identificación</title>
+    <link rel="stylesheet" href="moca_identificacion.css">
+</head>
+<body>
+    <div class="container">
+        <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+        <h1>PRUEBA 2: MoCA <br>Área: Identificación</h1>
+		
+        <p><strong>Instrucciones:</strong> Escriba el nombre de este animal en la caja de texto correspondiente.</p>
+
+        <form id="moca-form" autocomplete="off">
+            <div>
+                <div class="animal">
+                    <img src="foto1.jpg" alt="foto1">
+                    <label for="animal1">Escriba aquí el nombre:</label>
+                    <input type="text" id="animal1" name="animal1" required>
+                </div>
+                
+                <div class="animal">
+                    <img src="foto2.jpg" alt="foto2">
+                    <label for="animal2">Escriba aquí el nombre:</label>
+                    <input type="text" id="animal2" name="animal2" required>
+                </div>
+
+                <div class="animal">
+                    <img src="foto3.jpg" alt="foto3">
+                    <label for="animal3">Escriba aquí el nombre:</label>
+                    <input type="text" id="animal3" name="animal3" required>
+                </div>
+            </div>
+
+            <button type="button" id="submit-button">Enviar</button>
+        </form>
+    </div>
+
+    <script src="moca_identificacion.js"></script>
+	
+	<script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Stroop - Parte 2</title>
+    <link rel="stylesheet" href="style.css">
+	
+	 <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+   
+     
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hh">
+            <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+            <h1>PRUEBA 1: STROOP <br>PARTE 2</br></h1>
+            <div id="timer">Tiempo: 60 segundos</div>
+        </div>
+
+        <!-- Caja que muestra 'XXXX' con el color correspondiente -->
+        <div id="color-box" class="color-display">XXXX</div>
+
+        <!-- Botones para seleccionar colores -->
+        <div id="buttons">
+            <button class="color-button" data-color="AZUL">AZUL</button>
+            <button class="color-button" data-color="ROJO">ROJO</button>
+            <button class="color-button" data-color="VERDE">VERDE</button>
+        </div>
+    </div>
+
+    <script src="stroop_test_p2.js"></script> <!-- Enlace al archivo de JavaScript -->
+</body>
+</html>
