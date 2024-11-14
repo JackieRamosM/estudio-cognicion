@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MoCA - Orientación</title>
+    <link rel="stylesheet" href="style.css"> <!-- Si tienes un archivo CSS, enlázalo aquí -->
+  
+</head>
+<body>
+    <div class="container">
+        <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+        <h1>PRUEBA 2: MoCA <br>Área: Orientación</h1>
+        
+        <p><strong>Instrucciones:</strong> Por favor llene la información solicitada.</p>
+<br>
+         <form id="moca-form" autocomplete="off">
+            <div class="form-group" >
+                <label for="date">Día de la semana y fecha:</label>
+                <input type="text" id="date" required autocomplete="off">
+            </div>
+            <div class="form-group" autocomplete="off">
+                <label for="ciudad">Ciudad donde se encuentra:</label>
+                <input type="text" id="ciudad" required autocomplete="off">
+            </div>
+            <div class="form-group" autocomplete="off">
+                <label for="place">Lugar donde se encuentra:</label>
+                <input type="text" id="place" required autocomplete="off">
+            </div>
+            <button type="button" id="submit-button">Enviar</button>
+        </form>
+    </div>
+
+    <script src="moca_orientacion.js"></script>
+    <script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior derecha
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+    </script>
+</body>
+</html>

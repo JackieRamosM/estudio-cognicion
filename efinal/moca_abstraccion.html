@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MoCA - Abstracción</title>
+    <link rel="stylesheet" href="style.css"> <!-- Si tienes un archivo CSS, enlázalo aquí -->
+    <style>
+      
+
+        .word-list {
+            margin: 40px 0; /* Espacio arriba y abajo */
+			
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+        <h1>PRUEBA 2: MoCA <br>Área: Abstracción</h1>
+        
+        <p><strong>Instrucciones:</strong> Por favor escriba a qué <strong>categoría pertenecen</strong> las dos palabras a continuación (ejemplo: manzana, pera = frutas)</p>
+
+        <div class="word-list">
+            <label for="similarity1">GATO, PERRO:</label>
+            <input type="text" id="similarity1" placeholder="Similitud 1" required autocomplete="off">
+            <br>
+            <label for="similarity2">CUCHARA, TENEDOR:</label>
+            <input type="text" id="similarity2" placeholder="Similitud 2" required autocomplete="off">
+        </div>
+        
+        <button type="button" id="submit-button">Enviar</button>
+    </div>
+
+    <script src="moca_abstraccion.js"></script>
+    <script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+    </script>
+</body>
+</html>

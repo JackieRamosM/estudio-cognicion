@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones - Test de Stroop Fase 2</title>
+    <link rel="stylesheet" href="style.css">
+	 <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+        button {
+            background-color: #003DA5; /* Color del botón */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s; /* Efecto de transición */
+        }
+		h2 {
+			text-align: left;
+			color: #003DA5;
+		}
+
+     
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="hh">
+            <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+            <h1>PRUEBA 1: STROOP</h1>
+			<h2>PARTE 2</h2>
+        </div>  
+	
+        <p>
+            <strong>Instrucciones:</strong><br><br>
+            En esta parte de la prueba se trata de evaluar con cuánta rapidez puede seleccionar los colores de cada uno de los grupos de X que aparecen en la página.<br><br>
+			Este ejercicio se realiza de forma similar al de la página anterior. 
+			Recuerde que debe seleccionar los colores tan rápidamente como le sea posible durante 60 segundos.
+			<br><br>
+			Cuando esté listo, de clic en COMENZAR para iniciar la prueba.
+        </p>
+       
+        <button id="start-test" onclick="startTest()">Comenzar</button>
+    </div>
+
+    <script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior derecha
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+
+        function startTest() {
+            window.location.href = "stroop_test_p2.html"; // Redirigir a la segunda fase del test
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #003DA5;
+}
+
+.canvas {
+    position: relative;
+    height: 400px; /* Ajusta según sea necesario */
+    border: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.point {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #003DA5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    z-index: 10; /* Asegurarse de que las burbujas estén en la parte superior */
+}
+
+.number {
+    top: 20px; /* Ajusta según sea necesario */
+}
+
+.letter {
+    bottom: 20px; /* Ajusta según sea necesario */
+}
+
+#point1 { left: 50px; }
+#point2 { left: 150px; }
+#point3 { left: 250px; }
+#point4 { left: 350px; }
+#pointA { top: 100px; left: 50px; }
+#pointB { top: 100px; left: 150px; }
+#pointC { top: 100px; left: 250px; }
+#pointD { top: 100px; left: 350px; }
+
+.line {
+    position: absolute;
+    height: 2px;
+    background: black; /* Cambiar el color de la línea a negro */
+    z-index: 5; /* Asegurarse de que las líneas estén por debajo de las burbujas */
+}

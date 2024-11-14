@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test MoCA - Atención 4</title>
+    <link rel="stylesheet" href="moca_atencion.css">
+    <style>
+        /* Estilos adicionales para la cuadrícula de letras */
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(4, auto); /* 4 columnas, ajustadas al contenido */
+            gap: 1px; /* Espacio muy reducido entre filas y columnas */
+            justify-content: center; /* Centrar la cuadrícula horizontalmente */
+            margin-top: 20px;
+        }
+        .letter {
+            font-size: 24px; /* Tamaño de letra más grande */
+            cursor: pointer; /* Cambia el cursor al pasar sobre las letras */
+            padding: 5px; /* Ajusta el padding según sea necesario */
+            transition: color 0.3s; /* Suaviza el cambio de color */
+        }
+
+        button {
+            background-color: #003DA5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-info" id="user-info"></div>
+        <h1>PRUEBA 2: MoCA <br>Área: Atención (Parte 4)</h1>
+        <p id="instructions">
+            <strong>Instrucciones:</strong> Seleccione todas las letras <strong>F</strong> que encuentre a continuación:
+        </p>
+        
+        <div id="letras" class="letters-grid">
+            <div class="letter" data-letter="F">F</div>
+            <div class="letter" data-letter="B">B</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="C">C</div>
+            <div class="letter" data-letter="M">M</div>
+            <div class="letter" data-letter="N">N</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="J">J</div>
+            <div class="letter" data-letter="K">K</div>
+            <div class="letter" data-letter="L">L</div>
+            <div class="letter" data-letter="B">B</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="F">F</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="K">K</div>
+            <div class="letter" data-letter="D">D</div>
+            <div class="letter" data-letter="E">E</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="J">J</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="M">M</div>
+            <div class="letter" data-letter="O">O</div>
+            <div class="letter" data-letter="F">F</div>
+            <div class="letter" data-letter="A">A</div>
+            <div class="letter" data-letter="B">B</div>
+        </div>
+        <br>
+        <button type="button" id="submit-button">Enviar</button>
+    </div>
+
+    <script src="moca_atencion4.js"></script>
+    <script>
+        // Recuperar nombre y correo desde localStorage
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

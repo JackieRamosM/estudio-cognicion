@@ -1,0 +1,29 @@
+.container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#letter-grid {
+    display: inline-block;
+    margin: 20px auto;
+}
+
+.letter-row {
+    font-size: 2rem;
+    margin: 10px 0;
+    letter-spacing: 20px;
+}
+
+.letter {
+    cursor: pointer;
+}
+
+.letter.clicked {
+    color: #003366; /* Cambia el color a #003366 cuando se hace clic */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
