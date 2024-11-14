@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Stroop</title>
+    <link rel="stylesheet" href="style.css">
+	 <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+       
+
+     
+    </style>
+</head>
+<body>
+    <div class="container">
+	<div class="hh" >
+	<div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+        <h1>PRUEBA 1: STROOP <br> PARTE 1</br></h1>
+        <div id="timer">Tiempo: 60 segundos</div>
+     </div>  
+        <!-- Caja que muestra el valor del color desde la base de datos -->
+        <div id="color-box" class="color-display">
+            <!-- Aquí se mostrará el valor del color de la base de datos -->
+        </div>
+
+        <!-- Botones para seleccionar colores (en gris) -->
+        <div id="buttons">
+            <button class="color-button" data-color="AZUL">AZUL</button>
+            <button class="color-button" data-color="ROJO">ROJO</button>
+            <button class="color-button" data-color="VERDE">VERDE</button>
+           
+        </div>
+    </div>
+
+    <script src="stroop_test.js"></script> <!-- Enlace al archivo de JavaScript -->
+	 <script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior derecha
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+    </script>
+	
+</body>
+</html>
+	

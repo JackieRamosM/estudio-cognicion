@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones - Test MoCA</title>
+    <link rel="stylesheet" href="style.css">
+	 <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            padding: 20px;
+        }
+        button {
+            background-color: #003DA5; /* Color del botón */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s; /* Efecto de transición */
+        }
+
+     
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hh">
+            <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+            <h1>PRUEBA 2: EVALUACIÓN COGNITIVA (MoCA)</h1>
+        </div>
+
+        <p>
+            <strong>Instrucciones:</strong><br><br>
+            En esta prueba, se evaluará la cognición de forma integral, incluyendo áreas como la atención, el lenguaje y la memoria. 
+            El test se divide en varias secciones y cada sección tendrá sus propias instrucciones. 
+            Por favor, lea atentamente cada sección y responda a las preguntas de la mejor manera posible.<br><br>
+            Cuando esté listo, haga clic en COMENZAR para iniciar la prueba.
+        </p>
+
+        <button id="start-test" onclick="startTest()">Comenzar</button>
+    </div>
+
+    <script>
+        // Recuperar nombre y correo desde localStorage y mostrarlos en la parte superior derecha
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+
+        function startTest() {
+            window.location.href = "moca_identificacion.html"; // Redirigir a la prueba MoCA
+        }
+    </script>
+</body>
+</html>

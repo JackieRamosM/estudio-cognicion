@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones - Test MoCA Memoria</title>
+    <link rel="stylesheet" href="style.css"> <!-- Si tienes un archivo CSS, enlázalo aquí -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centrar el texto */
+        }
+
+        h1 {
+            color: #003DA5;
+            margin-bottom: 20px;
+        }
+
+        .word-list {
+            font-size: 2rem; /* Tamaño de fuente grande */
+            color: #333; /* Color del texto */
+            line-height: 1.5; /* Espaciado entre líneas */
+            margin: 40px 0; /* Espacio arriba y abajo */
+        }
+
+        button {
+            background-color: #003DA5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+			width: 100%;
+        }
+
+        button:hover {
+            background-color: #002B7E; /* Color más oscuro al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="user-info" id="user-info"></div> <!-- Contenedor para el nombre y correo -->
+	   <h1>PRUEBA 2: MoCA <br>Área: Memoria</br></h1>
+        <p><strong>Instrucciones:</strong> Por favor memorice las siguientes palabras. Cuando termine, presione SIGUIENTE:</p>
+        <div class="word-list">
+            <strong>ROSTRO</strong><br>
+            <strong>SEDA</strong><br>
+            <strong>IGLESIA</strong><br>
+            <strong>CLAVEL</strong><br>
+            <strong>ROJO</strong>
+        </div>
+        <button id="next-button" onclick="startTest()">SIGUIENTE</button>
+    </div>
+
+	
+	 <script>
+    window.onload = function () {
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        const wordListElement = document.querySelector('.word-list');
+
+        // Mostrar nombre y correo en la parte superior
+        if (name && email) {
+            document.getElementById('user-info').innerText = `${name} (${email})`;
+        } else {
+            alert("Error: No se encontraron los datos del usuario.");
+            window.location.href = "index.html"; // Redirigir si no se encuentra el correo
+        }
+
+        // Verificar el estado de moca_identificacion_flag
+        fetch('moca_identificacion_bandera.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }) // Enviar solo el correo para verificar el estado
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Respuesta del servidor para verificación de flag:", data); // Añadir depuración
+
+            if (wordListElement) {
+                if (data.flag === 1) {
+                    wordListElement.style.display = 'none'; // Ocultar lista de palabras
+                } else if (data.flag === 0) {
+                    wordListElement.style.display = 'block'; // Mostrar lista si el flag es 0
+                } else {
+                    alert("Error inesperado en la verificación del flag.");
+                }
+            } else {
+                console.error('Error: No se encontró el elemento .word-list en el DOM.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al verificar el estado del flag:', error);
+            alert("Hubo un error al verificar el estado.");
+        });
+    };
+
+    function startTest() {
+        const email = localStorage.getItem('email');
+        
+        // Actualizar el flag a 1 en la base de datos
+        fetch('moca_identificacion_bandera.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, updateFlag: true }) // Enviar solicitud para actualizar
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Respuesta del servidor al actualizar el flag:", data); // Añadir depuración
+            if (data.status === "success") {
+                window.location.href = "moca_memoria.html"; // Redirigir a la prueba MoCA
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error al actualizar el flag:', error);
+            alert("Hubo un error al intentar actualizar el estado.");
+        });
+    }
+</script>
+
+
+
+	
+</body>
+</html>
